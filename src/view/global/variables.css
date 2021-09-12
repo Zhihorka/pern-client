@@ -1,0 +1,15 @@
+:root {
+    --main-green: #75EE88;
+    --main-background-white: #FFFFFF;
+    --main-background-gray: #F5F6F8;
+    --main-background-darkGray: #dbdbdb;
+    --main-background-green: #E6F9F3;
+    --main-background-orange: #FEF1E6;
+    --main-background-dark: rgb(126, 126, 126);
+    --main-background-red: #FEE6E6;
+    --main-text-dark: #252A36;
+    --main-text-accent: #4A2040;
+    --main-alert: #EC3108;
+    --main-accent-violet:  #693C5E;
+    --main-accent-blue:  #4A9DFF;
+}

@@ -1,0 +1,6 @@
+@import "./view/global/variables.css";
+
+.App {
+  background-color: var(--main-background-gray);
+  font-family: Arial, sans-serif;
+}

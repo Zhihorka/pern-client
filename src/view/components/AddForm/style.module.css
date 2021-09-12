@@ -1,0 +1,48 @@
+@import "../../global/variables.css";
+
+.grid_row {
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-template-areas: ". . . .";
+}
+
+.row__style {
+  background-color: var(--main-accent-blue);
+  border-bottom: 1px solid var(--main-background-darkGray);
+  width: 100%;
+  padding: 10px 0 10px 0px;
+}
+
+.label {
+  text-align: center;
+}
+
+.delete {
+  text-align: center;
+}
+
+.button_add{
+  background-color: var(--main-background-white);
+  color:  var(--main-accent-blue);
+  border-radius: 10px;
+  border: none;
+  font-size: 1rem;
+  padding: 10px;
+}
+
+.input{
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  width: 80%;
+}
+
+.label_id{
+  color: var(--main-background-white);
+  font-size: 1rem;
+  padding: 10px;
+}

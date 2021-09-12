@@ -1,0 +1,24 @@
+@import "../../global/variables.css";
+
+.grid_row {
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-template-areas: ". . . .";
+}
+
+.row__style {
+  border-bottom: 1px solid var(--main-background-darkGray);
+  width: 100%;
+  padding: 10px 0 10px 0px;
+}
+
+.label {
+  text-align: center;
+}
+
+.delete {
+  text-align: center;
+}

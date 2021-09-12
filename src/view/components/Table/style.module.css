@@ -1,0 +1,87 @@
+@import "../../global/variables.css";
+
+.grid_table {
+    width: 100vw;
+    height: 100vh;
+    display: grid; 
+    grid-template-columns: 20% 1fr 20%; 
+    grid-template-rows: 10% 1fr 10%; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+      ". . ."
+      ". Table ."
+      ". . ."; 
+}
+
+.table__style{
+    grid-area: Table;
+    background-color: var(--main-background-gray);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    border-radius: 10px;
+    padding-top: 10px;
+}
+
+.label {
+    text-align: center;
+  }
+
+.grid_head{
+    display: grid; 
+    grid-auto-columns: 1fr; 
+    grid-template-columns: 1fr 1fr 1fr 1fr; 
+    grid-template-rows: 1fr; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+      ". . . ."; 
+}
+
+.head__style{
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--main-background-darkGray);
+}
+
+.buttons{
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 10px;
+}
+
+
+.button_add{
+  padding: 10px;
+  background-color: var(--main-accent-blue);
+  color: var(--main-background-white);
+  border-radius: 10px;
+  border: none;
+  font-size: 1rem;
+  margin-right: 10px;
+}
+
+.button_cancel{
+  padding: 10px;
+  background-color: var(--main-alert);
+  color: var(--main-background-white);
+  border-radius: 10px;
+  border: none;
+  font-size: 1rem;
+  margin-right: 10px;
+}
+
+.button_calculate{
+  padding: 10px;
+  background-color: var(--main-green);
+  color: var(--main-background-white);
+  border-radius: 10px;
+  border: none;
+  font-size: 1rem;
+}
+
+.button_calculate_disabled{
+  padding: 10px;
+  background-color: var(--main-background-dark);
+  color: var(--main-background-white);
+  border-radius: 10px;
+  border: none;
+  font-size: 1rem;
+}
