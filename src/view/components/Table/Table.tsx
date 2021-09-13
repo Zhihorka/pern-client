@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import AddForm from "../AddForm/AddForm";
+import BarChart from "../BarChart/BarChart";
 import Row from "../Row/Row";
 import style from "./style.module.css";
 
@@ -38,20 +39,18 @@ const fakeData = [
 
 const Table = () => {
   const [isFormShown, setFormShown] = useState(false);
+  const [isGraphShown, setGraphShown] = useState(false);
   const [users, setUsers] = useState<UsersI[]>(fakeData);
   const getLoginInfo = async () => {
     try {
       const response = await fetch("http://localhost:5000/users");
       const jsonData = await response.json();
-      console.log(jsonData);
       setUsers(jsonData);
-    } catch (error) {
-    }
+    } catch (error) {}
   };
 
   useEffect(() => {
     getLoginInfo();
-    
   }, []);
 
   const Rows = users.map((user, index) => (
@@ -64,59 +63,75 @@ const Table = () => {
       {user}
     </Row>
   ));
-  return (
-    <div className={style.grid_table}>
-      <div className={style.table__style}>
-        <div className={style.head__style}>
-          <div className={style.grid_head}>
-            <div>
-              {" "}
-              <div className={style.label}>userId</div>
-            </div>
-            <div>
-              {" "}
-              <div className={style.label}>dateRegistration</div>
-            </div>
-            <div>
-              {" "}
-              <div className={style.label}>dateLastActivity</div>
+
+  if (!isGraphShown) {
+    return (
+      <div className={style.grid_table}>
+        <div className={style.table__style}>
+          <div className={style.head__style}>
+            <div className={style.grid_head}>
+              <div>
+                {" "}
+                <div className={style.label}>userId</div>
+              </div>
+              <div>
+                {" "}
+                <div className={style.label}>dateRegistration</div>
+              </div>
+              <div>
+                {" "}
+                <div className={style.label}>dateLastActivity</div>
+              </div>
             </div>
           </div>
-        </div>
-        {Rows}
-        {isFormShown ? (
-          <AddForm
-            closeFunction={() => setFormShown(false)}
-            userId={users.length + 1}
-          />
-        ) : null}
-        <div className={style.buttons}>
+          {Rows}
           {isFormShown ? (
-            <button
-              onClick={() => setFormShown(false)}
-              className={style.button_cancel}
-            >
-              Cancel
-            </button>
-          ) : (
-            <button
-              onClick={() => setFormShown(true)}
-              className={style.button_add}
-            >
-              Add
-            </button>
-          )}
-          {isFormShown ? (
-            <button className={style.button_calculate_disabled} disabled>
-              Calculate
-            </button>
-          ) : (
-            <button className={style.button_calculate}>Calculate</button>
-          )}
+            <AddForm
+              closeFunction={() => setFormShown(false)}
+              userid={users.length + 1}
+            />
+          ) : null}
+          <div className={style.buttons}>
+            {isFormShown ? (
+              <button
+                onClick={() => setFormShown(false)}
+                className={style.button_cancel}
+              >
+                Cancel
+              </button>
+            ) : (
+              <button
+                onClick={() => setFormShown(true)}
+                className={style.button_add}
+              >
+                Add
+              </button>
+            )}
+            {isFormShown ? (
+              <button className={style.button_calculate_disabled} disabled>
+                Calculate
+              </button>
+            ) : (
+              <button
+                className={style.button_calculate}
+                onClick={() => setGraphShown(true)}
+              >
+                Calculate
+              </button>
+            )}
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return (
+      <div className={style.grid_table}>
+        <div className={style.table__style}>
+          <BarChart users = {users}/>
+        </div>
+      </div>
+    );
+  }
 };
 
 export default Table;

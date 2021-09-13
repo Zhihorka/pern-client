@@ -3,7 +3,7 @@ import style from "./style.module.css";
 
 interface AddFormI {
   closeFunction: () => any;
-  userId: number;
+  userid: number;
 }
 
 const formatDate = (date: String) => {
@@ -11,14 +11,14 @@ const formatDate = (date: String) => {
 };
 
 const addUser = async (
-  userId: number,
-  dateRegistration: string,
-  dateLastActivity: string,
+  userid: number,
+  dateregistration: string,
+  datelastactivity: string,
   closeFunction: () => any
 ) => {
-  if (dateRegistration.length === 10 && dateLastActivity.length === 10) {
+  if (dateregistration.length === 10 && datelastactivity.length === 10) {
     try {
-      const body = { userId, dateRegistration, dateLastActivity };
+      const body = { userid, dateregistration, datelastactivity };
       const addUser = await fetch("http://localhost:5000/users", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -33,7 +33,7 @@ const addUser = async (
   }
 };
 
-const AddForm: React.FC<AddFormI> = ({ closeFunction, userId }) => {
+const AddForm: React.FC<AddFormI> = ({ closeFunction, userid }) => {
   const [dateRegistration, setDateRegistration] = useState("");
   const [dateLastActivity, setDateLastActivity] = useState("");
   const changeRegistration = (event: {
@@ -50,7 +50,7 @@ const AddForm: React.FC<AddFormI> = ({ closeFunction, userId }) => {
     <div className={style.row__style}>
       <div className={style.grid_row}>
         <div className={style.label}>
-          <p className={style.label_id}>{userId}</p>
+          <p className={style.label_id}>{userid}</p>
         </div>
         <div className={style.label}>
           <input
@@ -72,7 +72,7 @@ const AddForm: React.FC<AddFormI> = ({ closeFunction, userId }) => {
           <button
             onClick={() =>
               addUser(
-                userId,
+                userid,
                 formatDate(dateRegistration.toString()),
                 formatDate(dateLastActivity.toString()),
                 closeFunction

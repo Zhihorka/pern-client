@@ -35,7 +35,7 @@ const Row: React.FC<UsersI>= ({userid, dateregistration, datelastactivity}) => {
         {datelastactivity}
         </div>
         <div className={style.delete}>
-          <button onClick = {()=>{deleteUser(userid)}}>Х</button>
+          <button onClick = {()=>deleteUser(userid)}>Х</button>
         </div>
         </div>
       </div>
