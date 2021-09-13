@@ -1,0 +1,13 @@
+@import "../../global/variables.css";
+
+.metrics_styled{
+    bottom: 20px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    background-color: var(--main-background-gray);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    width: 600px;
+    height: 100px;
+    border-radius: 10px ;
+}

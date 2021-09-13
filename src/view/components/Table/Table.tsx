@@ -41,6 +41,9 @@ const Table = () => {
   const [isFormShown, setFormShown] = useState(false);
   const [isGraphShown, setGraphShown] = useState(false);
   const [users, setUsers] = useState<UsersI[]>(fakeData);
+
+
+
   const getLoginInfo = async () => {
     try {
       const response = await fetch("http://localhost:5000/users");
@@ -127,7 +130,7 @@ const Table = () => {
     return (
       <div className={style.grid_table}>
         <div className={style.table__style}>
-          <BarChart users = {users}/>
+          <BarChart users = {users} closeFunction = {() =>setGraphShown(false)}/>
         </div>
       </div>
     );
