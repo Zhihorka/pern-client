@@ -1,12 +1,20 @@
-import React from "react";
+
+import React,{ useState } from "react";
+import { BooleanLiteral } from "typescript";
+import EditForm from "../EditForm/EditForm";
 import style from "./style.module.css";
 
 
-interface UsersI {
+interface UserI {
     userid: number;
     dateregistration: string;
     datelastactivity: string;
 }
+
+interface RowI {
+  user: UserI;
+}
+
 
 
 const deleteUser = async (userid: number) =>{
@@ -19,27 +27,34 @@ const deleteUser = async (userid: number) =>{
   }
 }
 
-const Row: React.FC<UsersI>= ({userid, dateregistration, datelastactivity}) => {
-
+const Row: React.FC<RowI>= ({user}) => {
+  const [isEditFormShown, setEditFormShown] = useState(false);
+if (!isEditFormShown){
     return(
       <div className={style.row__style}>
       <div className={style.grid_row}>
        
         <div className={style.label}>
-        {userid}
+        {user.userid}
         </div>
         <div className={style.label}>
-        {dateregistration}
+        {user.dateregistration}
         </div>
         <div className={style.label}>
-        {datelastactivity}
+        {user.datelastactivity}
+        </div>
+        <div className={style.edit}>
+          <button onClick = {() => setEditFormShown(true)}>Edit</button>
         </div>
         <div className={style.delete}>
-          <button onClick = {()=>deleteUser(userid)}>Х</button>
+          <button onClick = {()=>deleteUser(user.userid)}>Х</button>
         </div>
         </div>
       </div>
     );
+}else{
+  return <EditForm user = {user} closeFunction = {()=>setEditFormShown(false)}/>
+}
 };
 
 

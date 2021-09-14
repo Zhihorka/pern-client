@@ -26,7 +26,7 @@ const parseDate = (str: any) => {
   return new Date(mdy[2], mdy[0] - 1, mdy[1]);
 };
 
-const datediff = (first: any, second: any) => {
+const dateDifference = (first: any, second: any) => {
   return Math.round((second - first) / (1000 * 60 * 60 * 24));
 };
 
@@ -36,7 +36,7 @@ const formatDataForChart = (users: UsersI[]) => {
     newData.push({
       lifespan:
         Math.floor(
-          datediff(
+          dateDifference(
             parseDate(user.dateregistration),
             parseDate(user.datelastactivity)
           ) / 24

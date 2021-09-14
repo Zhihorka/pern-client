@@ -32,16 +32,10 @@ const fakeData = [
   },
 ];
 
-
-
-
-
-
 const Table = () => {
-  const [isFormShown, setFormShown] = useState(false);
+  const [isAddFormShown, setAddFormShown] = useState(false);
   const [isGraphShown, setGraphShown] = useState(false);
   const [users, setUsers] = useState<UsersI[]>(fakeData);
-
 
 
   const getLoginInfo = async () => {
@@ -57,12 +51,7 @@ const Table = () => {
   }, []);
 
   const Rows = users.map((user, index) => (
-    <Row
-      key={index}
-      userid={user.userid}
-      dateregistration={user.dateregistration}
-      datelastactivity={user.datelastactivity}
-    >
+    <Row key={index} user={user}>
       {user}
     </Row>
   ));
@@ -88,29 +77,29 @@ const Table = () => {
             </div>
           </div>
           {Rows}
-          {isFormShown ? (
+          {isAddFormShown ? (
             <AddForm
-              closeFunction={() => setFormShown(false)}
+              closeFunction={() => setAddFormShown(false)}
               userid={users.length + 1}
             />
           ) : null}
           <div className={style.buttons}>
-            {isFormShown ? (
+            {isAddFormShown ? (
               <button
-                onClick={() => setFormShown(false)}
+                onClick={() => setAddFormShown(false)}
                 className={style.button_cancel}
               >
                 Cancel
               </button>
             ) : (
               <button
-                onClick={() => setFormShown(true)}
+                onClick={() => setAddFormShown(true)}
                 className={style.button_add}
               >
                 Add
               </button>
             )}
-            {isFormShown ? (
+            {isAddFormShown ? (
               <button className={style.button_calculate_disabled} disabled>
                 Calculate
               </button>
@@ -130,7 +119,7 @@ const Table = () => {
     return (
       <div className={style.grid_table}>
         <div className={style.table__style}>
-          <BarChart users = {users} closeFunction = {() =>setGraphShown(false)}/>
+          <BarChart users={users} closeFunction={() => setGraphShown(false)} />
         </div>
       </div>
     );

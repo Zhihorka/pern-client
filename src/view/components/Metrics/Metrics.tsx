@@ -34,8 +34,9 @@ const Metrics: React.FC<MetricsI> = ({ closeFunction, usersLifespan }) => {
   };
   return (
     <div className={style.metrics_styled}>
+      <p>{`Users with lifespan more than ${lifespan}`}</p>
       <div className={style.metric}>{approach}</div>
-      <input onChange={changeLifespan} />
+      <input value = {lifespan} onChange={changeLifespan} />
       <button
         onClick={() =>
           setApproach(rellingRetention(usersLifespan, Number(lifespan)))

@@ -6,7 +6,7 @@
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr;
   gap: 0px 0px;
-  grid-template-areas: ". . . .";
+  grid-template-areas: ". . . . .";
 }
 
 .row__style {
@@ -16,6 +16,10 @@
 }
 
 .label {
+  text-align: center;
+}
+
+.edit {
   text-align: center;
 }
 
